@@ -16,7 +16,8 @@
         <result column="create_at" jdbcType="BIGINT" property="createAt" />
         <result column="update_at" jdbcType="BIGINT" property="updateAt" />
     </resultMap>
-    <insert id="insert" parameterType="com.mutesaid.pojo.Student" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insert" parameterType="com.mutesaid.pojo.Student"
+            keyProperty="id" useGeneratedKeys="true">
         insert into students (id, name, qq, type,
           time_of, grade_school, online_id,
           link, wish, fellow,
@@ -28,14 +29,8 @@
           #{understand,jdbcType=VARCHAR}, #{createAt,jdbcType=BIGINT}, #{updateAt,jdbcType=BIGINT}
           )
     </insert>
-    <select id="getById" resultMap="BaseResultMap">
-        select * from students where id = #{id}
-    </select>
-    <select id="getByName" resultMap="BaseResultMap">
-        select * from students where name = #{name}
-    </select>
-    <select id="getByOnlineId" resultMap="BaseResultMap">
-        select * from students where online_id = #{onlinId}
+    <select id="getStudent" resultMap="BaseResultMap">
+        select * from students where ${key} = #{value}
     </select>
     <delete id="delete">
         delete from students where online_id = #{onlineId}

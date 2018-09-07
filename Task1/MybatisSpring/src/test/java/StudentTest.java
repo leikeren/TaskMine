@@ -50,8 +50,10 @@ public class StudentTest {
     @Test
     public void getById() {
         try{
-            Student stu = studentService.getById(1L);
-            logger.info("id为1的学生的信息为{}",stu.toString());
+            List<Student> stuList = studentService.getStudent("id",2);
+            for(int i = 0;i < stuList.size();i++){
+                logger.info("id为2的学生的信息为{}",stuList.get(i).toString());
+            }
         }catch (Exception e) {
             logger.info("查找失败.",e);
         }
@@ -60,7 +62,7 @@ public class StudentTest {
     @Test
     public void getByName() {
         try{
-            List<Student> stuList = studentService.getByName("张新");
+            List<Student> stuList = studentService.getStudent("name","张新");
             for(int i = 0; i < stuList.size(); i++) {
                 logger.info("姓名为张新的学生的信息为{}",stuList.get(i).toString());
             }
@@ -72,8 +74,10 @@ public class StudentTest {
     @Test
     public void getByOnlineId() {
         try{
-            Student stu = studentService.getByOnlineId("6785");
-            logger.info("学号为6785的学生的信息为{}",stu.toString());
+            List<Student> stuList = studentService.getStudent("online_id","6785");
+            for(int i = 0; i < stuList.size(); i++) {
+                logger.info("学号为6785的学生的信息为{}",stuList.get(i).toString());
+            }
         }catch (Exception e) {
             logger.info("查找失败",e);
         }
@@ -90,5 +94,15 @@ public class StudentTest {
         logger.info("把学号为6785的学生的qq更新为999999999");
         logger.info(studentService.update("6785","qq",
                 999999999,System.currentTimeMillis()));
+    }
+
+    @Test
+    public void poolTest() {
+        long startTime = System.currentTimeMillis();
+        for(int i = 0; i < 5000; i++) {
+            studentService.insert(student);
+        }
+        long endTime = System.currentTimeMillis();
+        logger.info("运行时间：{}",endTime - startTime);
     }
 }

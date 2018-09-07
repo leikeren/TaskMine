@@ -15,18 +15,8 @@ public class StudentServiceImpl implements StudentService {
     private Logger logger = LogManager.getLogger(StudentServiceImpl.class);
 
     @Override
-    public List<Student> getByName(String name) {
-        return studentMapper.getByName(name);
-    }
-
-    @Override
-    public Student getById(long id) {
-        return studentMapper.getById(id);
-    }
-
-    @Override
-    public Student getByOnlineId(String onlineId) {
-        return studentMapper.getByOnlineId(onlineId);
+    public List<Student> getStudent(String key, Object value) {
+        return studentMapper.getStudent(key, value);
     }
 
     @Override

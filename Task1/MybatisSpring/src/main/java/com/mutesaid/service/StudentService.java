@@ -4,11 +4,7 @@ import com.mutesaid.pojo.Student;
 import java.util.List;
 
 public interface StudentService {
-    List<Student> getByName(String name);
-
-    Student getById(long id);
-
-    Student getByOnlineId(String onlineId);
+    List<Student> getStudent(String key,Object value);
 
     Long insert(Student stu);
 

@@ -5,23 +5,23 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <context:property-placeholder location="db.properties"/>
+    <!--<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"-->
+          <!--destroy-method="close">-->
+        <!--&lt;!&ndash; 数据库驱动 &ndash;&gt;-->
+        <!--<property name="driverClass" value="${jdbc.driver}" />-->
+        <!--&lt;!&ndash; 相应驱动的jdbcUrl&ndash;&gt;-->
+        <!--<property name="jdbcUrl" value="${jdbc.url}" />-->
+        <!--&lt;!&ndash; 数据库的用户名 &ndash;&gt;-->
+        <!--<property name="username" value="${jdbc.username}" />-->
+        <!--&lt;!&ndash; 数据库的密码 &ndash;&gt;-->
+        <!--<property name="password" value="${jdbc.password}" />-->
+    <!--</bean>-->
     <bean id="dataSource" destroy-method="close"
           class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}" />
         <property name="jdbcUrl" value="${jdbc.url}" />
         <property name="user" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
-
-        <property name="minPoolSize" value="1"/>
-        <property name="maxPoolSize" value="20"/>
-        <property name="maxIdleTime" value="1800"/>
-        <property name="acquireIncrement" value="2"/>
-        <property name="maxStatements" value="0"/>
-        <property name="initialPoolSize" value="2"/>
-        <property name="idleConnectionTestPeriod" value="1800"/>
-        <property name="acquireRetryAttempts" value="30"/>
-        <property name="breakAfterAcquireFailure" value="true"/>
-        <property name="testConnectionOnCheckout" value="false"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -35,18 +35,20 @@
         <property name="basePackage" value="com.mutesaid.mapper"/>
     </bean>
 
+
+
     <bean id="studentService" class="com.mutesaid.serviceImpl.StudentServiceImpl">
     </bean>
 
     <bean id="student1" class="com.mutesaid.pojo.Student"
-          p:name="苏正荣"
-          p:qq="2210126316"
-          p:type="Android工程师"
-          p:timeOf="2018-09-16"
-          p:gradeSchool="淮海工学院东港学院"
-          p:onlineId="Android-591"
-          p:link="http://www.jnshu.com/school/23273/daily"
-          p:wish="如果我不能在IT特训营拼尽全力，为自己以后的修行路上打好基础，就让我变胖2吨！"
-          p:fellow="汪开放"
+          p:name="张新"
+          p:qq="534348133"
+          p:type="前端工程师"
+          p:timeOf="2018-08-18"
+          p:gradeSchool="长春大学"
+          p:onlineId="6785"
+          p:link="http://www.jnshu.com/school/29710/daily"
+          p:wish="如果我不能在IT特训营拼尽全力，为自己以后的修行路上打好基础，就让我变胖2斤！"
+          p:fellow="刘仁瑞"
           p:understand="知乎"/>
 </beans>

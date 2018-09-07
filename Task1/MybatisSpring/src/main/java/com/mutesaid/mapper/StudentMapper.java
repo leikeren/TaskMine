@@ -8,11 +8,7 @@ import java.util.List;
 public interface StudentMapper {
     Long insert(Student record);
 
-    Student getById(Long id);
-
-    List<Student> getByName(String name);
-
-    Student getByOnlineId(String onlineId);
+    List<Student> getStudent(@Param("key") String key, @Param("value") Object value);
 
     void delete(String onlineId);
 
